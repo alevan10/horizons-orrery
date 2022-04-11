@@ -1,12 +1,19 @@
-import "axios"
-import {HorizonsRequest, HorizonsResponse} from "src/models/models";
-import axios, {AxiosResponse} from "axios";
+import axios from 'axios';
+import { HorizonsRequest, HorizonsResponse } from '../models/models';
 
-const baseUrl = "http://levan.home/api/v1/ephemerides"
+const baseUrl = 'http://levan.home/api/v1/ephemerides';
 
-class HorizonsService {
-    async get(request: HorizonsRequest): Promise<HorizonsResponse> {
-        const response: AxiosResponse = await axios.post(baseUrl, request)
-        return response.data
+// TODO: Turn this into a class
+
+export class HorizonsService {
+  async get(request: HorizonsRequest): Promise<HorizonsResponse> {
+    try {
+      const { data } = await axios.post(baseUrl, [request]);
+      // data.date = new Date(Date.parse(data.date));
+      return data;
+    } catch (e) {
+      console.log(e)
+      throw e;
     }
+  }
 }

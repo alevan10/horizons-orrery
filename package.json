@@ -9,6 +9,7 @@
     "@types/less": "^3.0.3",
     "axios": "^0.26.1",
     "core-js": "^3.21.1",
+    "eslint-config-prettier": "^8.5.0",
     "konva": "^8.3.5",
     "raf": "^3.4.1",
     "react": "^18.0.0",
@@ -21,8 +22,9 @@
   "scripts": {
     "start": "webpack serve --port 8080",
     "build": "NODE_ENV=production webpack",
-    "test": "node_modules/.bin/react-scripts test",
-    "eject": "node_modules/.bin/react-scripts eject"
+    "test": "jest",
+    "lint": "npx eslint --ext .ts,.tsx src/",
+    "lint --fix": "npx eslint --ext .ts,.tsx src/ --fix"
   },
   "eslintConfig": {
     "extends": [
@@ -43,14 +45,30 @@
     ]
   },
   "devDependencies": {
+    "@babel/core": "^7.17.9",
+    "@babel/eslint-parser": "^7.17.0",
+    "@babel/preset-env": "^7.16.11",
+    "@babel/preset-typescript": "^7.16.7",
     "@types/react": "^18.0.1",
     "@types/react-dom": "^18.0.0",
+    "@typescript-eslint/eslint-plugin": "^5.18.0",
+    "@typescript-eslint/parser": "^5.18.0",
+    "babel-jest": "^27.5.1",
     "css-loader": "^6.7.1",
     "eslint": "^8.13.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-airbnb-typescript": "^17.0.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-react": "^7.29.4",
+    "eslint-plugin-react-hooks": "^4.4.0",
+    "eslint-webpack-plugin": "^3.1.1",
     "html-webpack-plugin": "^5.5.0",
+    "jest": "^27.5.1",
     "less": "^4.1.2",
     "less-loader": "^10.2.0",
     "mini-css-extract-plugin": "^2.6.0",
+    "prettier": "2.6.2",
     "ts-loader": "^9.2.8",
     "typescript": "^4.6.3",
     "webpack": "^5.72.0",

@@ -6,7 +6,7 @@
 
 # Official language image. Look for the different tagged releases at:
 # https://hub.docker.com/r/library/python/tags/
-image: python:3.9
+image: node:17
 
 # Change pip's cache directory to be inside the project directory since we can
 # only cache local items.
@@ -21,16 +21,10 @@ variables:
 # them in a virtualenv and cache it as well.
 cache:
   paths:
-    - .cache/pip
-    - venv/
+    - node_modules/
 
 before_script:
-  - python -V  # Print out python version for debugging
-  - pip install poetry
-  - poetry config virtualenvs.create false
-  - poetry config http-basic.home $PYPI_USER $PYPI_PASSWORD
-  - poetry install -v
-  - export PYTHONPATH="$(pwd)/src:$(pwd)/src/horizons_web_service:$PYTHONPATH"
+  - npm install
 
 stages:
   - Static Analysis
@@ -43,36 +37,27 @@ Pylint:
   stage: Static Analysis
   retry: 1
   script:
-    - pylint -E -d C0301 src/horizons_web_service tests
-
-Black:
-  stage: Static Analysis
-  retry: 1
-  script:
-    - python -m black . --check --verbose
+    - npm run lint
 
 Unit:
   stage: Tests
   retry: 1
   script:
-    - pytest -v ./tests/unit
-
-Functional:
-  stage: Tests
-  retry: 1
-  script:
-    - pytest -v ./tests/functional
+    - npm run test
+    artifacts:
+      when: always
+      reports:
+        junit:
+          - junit.xml
 
 Build_Prep:
   stage: Build Prep
   retry: 1
   only:
     - main
-  before_script:
-    - pip install poetry
   script:
-    - HORIZONS_API_VERSION=$(poetry version -s)
-    - echo "$(poetry version -s)" > VERSION
+    - ORRERY_VERSION=$(node -e "console.log(require('./package.json').version);")
+    - echo "ORRERY_VERSION" > VERSION
   artifacts:
     paths:
       - VERSION
@@ -89,15 +74,15 @@ Build:
   dependencies:
     - Build_Prep
   script:
-    - HORIZONS_VERSION=$(cat VERSION)
+    - ORRERY_VERSION=$(cat VERSION)
     - mkdir -p /kaniko/.docker
     - >-
       /kaniko/executor
       --insecure
       --skip-tls-verify
       --context "${CI_PROJECT_DIR}"
-      --dockerfile "${CI_PROJECT_DIR}/src/docker/Dockerfile"
-      --destination "levan.home:5000/horizons-orrery:${HORIZONS_VERSION}"
+      --dockerfile "${CI_PROJECT_DIR}/Dockerfile"
+      --destination "levan.home:5000/horizons-orrery:${ORRERY_VERSION}"
       --build-arg PYPI_USER=$PYPI_USER
       --build-arg PYPI_PASSWORD=$PYPI_PASSWORD
 
@@ -111,5 +96,5 @@ Deploy:
   image: alpine/helm:3.8.1
   before_script: []
   script:
-    - HORIZONS_VERSION=$(cat VERSION)
-    - helm upgrade horizons-api ./horizons-api --install --values=./horizons-api/values.yaml --namespace horizons --set image.tag=$HORIZONS_VERSION
+    - ORRERY_VERSION=$(cat VERSION)
+    - helm upgrade horizons-orrery ./horizons-orrery --install --values=./horizons-orrery/values.yaml --namespace horizons --set image.tag=$HORIZONS_VERSION
