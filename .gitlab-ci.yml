@@ -44,11 +44,11 @@ Unit:
   retry: 1
   script:
     - npm run test
-    artifacts:
-      when: always
-      reports:
-        junit:
-          - junit.xml
+  artifacts:
+    when: always
+    reports:
+      junit:
+        - junit.xml
 
 Build_Prep:
   stage: Build Prep
