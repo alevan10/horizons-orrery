@@ -1,11 +1,6 @@
-FROM node:17
+FROM node:17.9
 
-COPY tsconfig.json /orrery/
-COPY webpack.config.js /orrery/
-COPY package.json /orrery/
-COPY package-lock.json /orrery/
-COPY index.html /orrery/
-COPY src/* /orrery/src/
+COPY . /orrery/
 
 WORKDIR /orrery
 RUN npm install
