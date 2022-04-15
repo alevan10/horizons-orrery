@@ -117,4 +117,4 @@ Deploy:
   before_script: []
   script:
     - ORRERY_VERSION=$(cat VERSION)
-    - helm upgrade horizons-orrery ./horizons-orrery --install --values=./horizons-orrery/values.yaml --namespace horizons --set image.tag=$HORIZONS_VERSION
+    - helm upgrade horizons-orrery ./horizons-orrery --install --values=./horizons-orrery/values.yaml --namespace horizons --set image.tag=$ORRERY_VERSION
