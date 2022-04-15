@@ -56,6 +56,20 @@ Unit:
       junit:
         - junit.xml
 
+Build_Test:
+  stage: Tests
+  retry: 1
+  only:
+    - merge_requests
+  script:
+    - npm run build
+    - npm run start
+  artifacts:
+    when: always
+    reports:
+      junit:
+        - junit.xml
+
 Build_Prep:
   stage: Build Prep
   retry: 1
