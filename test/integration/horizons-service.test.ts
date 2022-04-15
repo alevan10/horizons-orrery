@@ -1,4 +1,3 @@
-import axios from "axios";
 import { HorizonsService } from "horizons-service/horizons-service";
 import { HorizonsRequest, HorizonsRequestOptions, HorizonsEphemResponse } from "models/models";
 import {AngleFormat, Observers, Planets, StepSize} from "models/enums";
