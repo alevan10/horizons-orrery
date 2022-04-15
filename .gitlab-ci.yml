@@ -33,11 +33,17 @@ stages:
   - Build
   - Deploy
 
-Pylint:
+ESLint:
   stage: Static Analysis
   retry: 1
   script:
     - npm run lint
+
+Typescript Compile Check:
+  stage: Static Analysis
+  retry: 1
+  script:
+    - npx tsc
 
 Unit:
   stage: Tests

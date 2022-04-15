@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { HorizonsRequest, HorizonsResponse } from '../models/models';
+import { HorizonsRequest, HorizonsResponse } from 'models/models';
 
 const baseUrl = 'http://levan.home/api/v1/ephemerides';
 

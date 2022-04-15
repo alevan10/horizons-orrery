@@ -11,7 +11,7 @@ export enum Planets {
 
 export enum Observers {
     Sun = '@10',
-    Earth = `@${Planets.Earth}`
+    Earth = '@399'
 }
 
 export enum Moons {

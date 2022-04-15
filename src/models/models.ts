@@ -1,4 +1,4 @@
-import { Observers, Planets, Moons } from './enums';
+import { Observers, Planets, Moons } from 'models/enums';
 
 export interface HorizonsRequestOptions {
     angleFormat: string
@@ -26,5 +26,5 @@ export interface HorizonsEphemResponse {
 }
 
 export interface HorizonsResponse {
-    [key: Planets | Moons]: Array<HorizonsEphemResponse>
+    [key: string]: Array<HorizonsEphemResponse>
 }
