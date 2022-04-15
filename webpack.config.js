@@ -9,7 +9,7 @@ module.exports = {
   mode: prod ? 'production' : 'development',
   entry: './src/index.tsx',
   output: {
-    path: path.resolve(ROOT, '/dist/'),
+    path: path.resolve(ROOT, 'dist/'),
     filename: 'bundle.js',
   },
   resolve: {
