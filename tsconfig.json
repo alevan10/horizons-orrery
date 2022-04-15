@@ -4,9 +4,9 @@
     "jsx": "react",
     "module": "esnext",
     "moduleResolution": "node",
-    "baseUrl": "./src",
+    "baseUrl": ".",
     "paths": {
-      "*": ["./*"]
+      "*": ["src/*"]
     },
     "lib": [
       "dom",
