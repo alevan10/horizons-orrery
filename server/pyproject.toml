@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "horizons-orrery-server"
+version = "0.1.0"
+description = "A static web server for the build horizons webapp"
+authors = ["alevan <levan.andrew.w@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+fastapi = "0.70.0"
+uvicorn = "0.15.0"
+gunicorn = "20.1.0"
+
+[tool.poetry.dev-dependencies]
+black = "22.3.0"
+pylint = "2.12.2"
+pytest = "6.2.5"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
