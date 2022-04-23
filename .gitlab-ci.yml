@@ -77,7 +77,7 @@ Build_Prep:
     - main
   script:
     - ORRERY_VERSION=$(node -e "console.log(require('./package.json').version);")
-    - echo "ORRERY_VERSION" > VERSION
+    - echo "$ORRERY_VERSION" > VERSION
   artifacts:
     paths:
       - VERSION
