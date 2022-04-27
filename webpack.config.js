@@ -12,6 +12,10 @@ module.exports = {
     path: path.resolve(ROOT, 'dist/'),
     filename: 'bundle.js',
   },
+  devServer: {
+    static: './dist',
+    hot: true
+  },
   resolve: {
     roots: [
         path.resolve(ROOT, 'node_modules'),

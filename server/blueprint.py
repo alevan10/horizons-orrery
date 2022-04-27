@@ -5,8 +5,8 @@ from starlette.staticfiles import StaticFiles
 app = FastAPI()
 
 origins = [
-    "http://localhost:3000",
-    "localhost:3000",
+    "http://localhost:8080",
+    "localhost:8080",
     "http://levan.home",
     "https://levan.home",
     "https://andrewlevan.com"
@@ -21,4 +21,4 @@ app.add_middleware(
     allow_headers=["*"]
 )
 
-app.mount("/", StaticFiles(directory="/dist", html=True), name="orrery")
+app.mount("/", StaticFiles(directory="/dist", html=True), name="static")
