@@ -23,4 +23,5 @@ module.exports = {
       },
     },
   ],
+  ignorePatterns: [".eslintrc.*", "vite.config.*", "jest.config.*"]
 };

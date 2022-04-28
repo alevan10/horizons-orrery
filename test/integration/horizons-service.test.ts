@@ -1,6 +1,6 @@
 import { HorizonsService } from "horizons-service/horizons-service";
-import { HorizonsRequest, HorizonsRequestOptions, HorizonsEphemResponse } from "models/models";
-import {AngleFormat, Observers, Planets, StepSize} from "models/enums";
+import { HorizonsRequest, HorizonsRequestOptions, HorizonsEphemResponse } from "horizons-service/models/models";
+import {AngleFormat, Observers, Planets, StepSize} from "horizons-service/models/enums";
 
 describe("Horizons Service", function () {
     it("should return data", async function () {

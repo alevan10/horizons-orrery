@@ -1,8 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {Orrery} from "app/orrery";
 import './index.less';
 
 ReactDOM.render(
-  <h1>Hello React!</h1>,
-  document.getElementById('app-root'),
+  <Orrery />,
+  document.getElementById('root'),
 );
