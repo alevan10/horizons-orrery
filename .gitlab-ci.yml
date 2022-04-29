@@ -42,12 +42,14 @@ ESLint:
 Typescript Compile Check:
   stage: Static Analysis
   retry: 1
+  when: always
   script:
     - npx tsc
 
 Unit:
   stage: Tests
   retry: 1
+  when: always
   script:
     - npm run test
   artifacts:
