@@ -13,9 +13,9 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      app: path.resolve(SRC, "app", "*"),
-      "horizons-service": path.resolve(SRC, "horizons-service", "*"),
-      models: path.resolve(SRC, "models", "*")
+      app: path.resolve(SRC, "app"),
+      "horizons-service": path.resolve(SRC, "horizons-service"),
+      models: path.resolve(SRC, "models")
     }
   }
 })

@@ -15,10 +15,12 @@ const getColor = (id: string): string => {
     return id ? "blue" : "green"
 }
 
-export function Orbit({id, majorAxis, minorAxis, centerX, centerY, radius, useCircle = true}: OrbitProps) {
+export function Orbit({id, majorAxis, minorAxis, centerX, centerY, radius, useCircle = true}: OrbitProps): JSX.Element {
     const orbitColor = getColor(id)
 
     return useCircle ?
+        // @ts-ignore
         <Circle x={centerX} y={centerY} radius={radius} stroke={orbitColor}/> :
+        // @ts-ignore
         <Ellipse x={centerX} y={centerY} radiusX={majorAxis} radiusY={minorAxis} stroke={orbitColor}/>;
 }

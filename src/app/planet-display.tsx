@@ -8,7 +8,7 @@ type PlanetDisplayType = {
     debug?: boolean,
     width: number,
     height?: number,
-    planets: string[]
+    planets?: string[]
 }
 
 export function getCenterXY(width: number): number[] {
@@ -21,9 +21,10 @@ export function PlanetDisplay({width, planets = [Planets.Earth]}: PlanetDisplayT
 
     const [centerX, centerY] = getCenterXY(width)
     return (
-        <React.Fragment className="planet-display">
-                {planets.map(planet => {
+        <React.Fragment>
+                {planets?.map(planet => {
                     return (
+                        // @ts-ignore
                         <Layer key={planet}>
                             <Planet id={planet} radius={width / 4} centerX={centerX} centerY={centerY}/>
                         </Layer>
