@@ -63,7 +63,6 @@ Build_Test:
     - merge_requests
   script:
     - npm run build
-    - npm run start
   artifacts:
     when: always
     reports:
