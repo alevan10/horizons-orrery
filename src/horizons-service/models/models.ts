@@ -1,4 +1,4 @@
-import { Observers, Planets, Moons } from 'models/enums';
+import { Observers, Planets, Moons } from 'horizons-service/models/enums';
 
 export interface HorizonsRequestOptions {
     angleFormat: string

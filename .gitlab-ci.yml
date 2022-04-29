@@ -59,8 +59,6 @@ Unit:
 Build_Test:
   stage: Tests
   retry: 1
-  only:
-    - merge_requests
   script:
     - npm run build
   artifacts:
