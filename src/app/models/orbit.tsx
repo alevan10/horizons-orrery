@@ -1,26 +1,37 @@
 import React from "react";
-import {Circle, Ellipse} from "react-konva";
+import "./orbit.less"
+import {Ellipse} from "app/models/ellipse";
 
 type OrbitProps = {
     id: string,
-    majorAxis?: number,
-    minorAxis?: number,
-    radius?: number,
+    color: string,
+    majorAxis: number,
+    minorAxis: number,
     centerX: number,
     centerY: number,
-    useCircle?: boolean
+    useCircle?: boolean,
+    lineThickness?: number,
+    children: JSX.Element[]
 }
 
-const getColor = (id: string): string => {
-    return id ? "blue" : "green"
-}
+export function Orbit(
+    {
+        id,
+        color,
+        centerX,
+        centerY,
+        majorAxis,
+        minorAxis,
+        children,
+        lineThickness = 2
+    }: OrbitProps
+): JSX.Element {
+    const ellipse = new Ellipse({semiMajorAxis: majorAxis, semiMinorAxis: minorAxis})
+    const orbitStyle = {
+        ...ellipse.style(2 * lineThickness, centerX, centerY),
+        border: `${lineThickness}px solid ${color}`,
+        position: "absolute",
+    }
 
-export function Orbit({id, majorAxis, minorAxis, centerX, centerY, radius, useCircle = true}: OrbitProps): JSX.Element {
-    const orbitColor = getColor(id)
-
-    return useCircle ?
-        // @ts-ignore
-        <Circle x={centerX} y={centerY} radius={radius} stroke={orbitColor}/> :
-        // @ts-ignore
-        <Ellipse x={centerX} y={centerY} radiusX={majorAxis} radiusY={minorAxis} stroke={orbitColor}/>;
+    return (<div id={id} style={orbitStyle} className="orbit">{children}</div>)
 }

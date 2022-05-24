@@ -1,6 +1,5 @@
 import React from "react";
 import "./planet-display.less"
-import {Layer} from "react-konva";
 import {Planets} from "horizons-service/models/enums";
 import {Planet} from "app/models/planet";
 
@@ -20,14 +19,21 @@ export function getCenterXY(width: number): number[] {
 export function PlanetDisplay({width, planets = [Planets.Earth]}: PlanetDisplayType) {
 
     const [centerX, centerY] = getCenterXY(width)
+
+    console.log(`Width=${width}`)
     return (
         <React.Fragment>
-                {planets?.map(planet => {
+                {planets?.map((planet, index) => {
                     return (
                         // @ts-ignore
-                        <Layer key={planet}>
-                            <Planet id={planet} radius={width / 4} centerX={centerX} centerY={centerY}/>
-                        </Layer>
+                        <Planet
+                            key={planet}
+                            id={planet}
+                            radius={(width / (planets?.length - index)) - 50}
+                            centerX={centerX}
+                            centerY={centerY}
+                            angle={90}
+                        />
                     )
                     })
                 }

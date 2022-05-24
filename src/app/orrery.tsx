@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {PlanetDisplay} from "app/planet-display";
 import "./orrery.less"
-import {Stage} from "react-konva";
 
 export function Orrery(): JSX.Element {
     const [windowLength, setWindowLength] = useState(window.innerWidth)
@@ -17,8 +16,6 @@ export function Orrery(): JSX.Element {
 
     return (
         // @ts-ignore
-        <Stage width={windowLength} height={windowHeight}>
-            <PlanetDisplay debug={true} height={windowHeight} width={windowLength}/>
-        </Stage>
+        <PlanetDisplay debug={true} height={windowHeight} width={windowLength}/>
     )
 }
