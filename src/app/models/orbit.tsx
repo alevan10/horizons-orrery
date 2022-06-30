@@ -1,4 +1,4 @@
-import React from "react";
+import React, {CSSProperties} from "react";
 import "./orbit.less"
 import {Ellipse} from "app/models/ellipse";
 
@@ -9,6 +9,7 @@ type OrbitProps = {
     minorAxis: number,
     centerX: number,
     centerY: number,
+    angle: number,
     useCircle?: boolean,
     lineThickness?: number,
     children: JSX.Element[]
@@ -23,6 +24,7 @@ export function Orbit(
         majorAxis,
         minorAxis,
         children,
+        angle,
         lineThickness = 2
     }: OrbitProps
 ): JSX.Element {
@@ -30,8 +32,9 @@ export function Orbit(
     const orbitStyle = {
         ...ellipse.style(2 * lineThickness, centerX, centerY),
         border: `${lineThickness}px solid ${color}`,
+        transform: `rotate(${angle}deg)`,
         position: "absolute",
-    }
+    } as CSSProperties
 
     return (<div id={id} style={orbitStyle} className="orbit">{children}</div>)
 }

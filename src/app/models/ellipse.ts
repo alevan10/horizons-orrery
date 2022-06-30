@@ -33,8 +33,8 @@ export class Ellipse {
         return {
             height: this.major - offset,
             width: this.minor - offset,
-            top: centerY - ((this.major) - offset),
-            left: centerX - ((this.minor) - offset)
+            top: centerY - (((this.major) - offset) / 2),
+            left: centerX - (((this.minor) - offset) / 2)
         }
     }
 }
