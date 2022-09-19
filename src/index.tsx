@@ -1,9 +1,8 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import {Orrery} from "app/orrery";
+import { createRoot } from 'react-dom/client';
 import './index.less';
 
-ReactDOM.render(
-  <Orrery />,
-  document.getElementById('root'),
-);
+const container = document.getElementById('root');
+const root = createRoot(container)
+root.render(<Orrery />);

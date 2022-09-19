@@ -6,9 +6,9 @@ const baseUrl = 'http://levan.home/api/v1/ephemerides';
 // TODO: Turn this into a class
 
 export class HorizonsService {
-  async get(request: HorizonsRequest): Promise<HorizonsResponse> {
+  async get(requests: HorizonsRequest[]): Promise<HorizonsResponse> {
     try {
-      const { data } = await axios.post(baseUrl, [request]);
+      const { data } = await axios.post(baseUrl, requests);
       return data;
     } catch (e) {
       console.log(e)

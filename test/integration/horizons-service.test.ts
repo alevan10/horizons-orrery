@@ -18,11 +18,12 @@ describe("Horizons Service", function () {
             target: Planets.Mars,
             observer: Observers.Sun
         }
-        const data = await horizons.get(testRequest)
+        const data = await horizons.get([testRequest])
         expect(data).toBeDefined()
         expect(data[Planets.Mars].length).toEqual(2)
         data[`${Planets.Mars}`].forEach( (ephem: HorizonsEphemResponse) => {
-            expect(ephem.dRa).toBeDefined()
+            expect(ephem.dRa).toBeDefined();
+            expect(ephem.raIcrf).toBeDefined();
         })
     })
 })
