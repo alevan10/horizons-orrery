@@ -13,6 +13,7 @@ type EllipseStyleType = {
 
 export class Ellipse {
     public readonly major: number;
+
     public readonly minor: number;
 
     constructor({semiMajorAxis, semiMinorAxis}: EllipseConstructorType) {
@@ -21,6 +22,7 @@ export class Ellipse {
     }
 
     private e: number = Math.sqrt(1 - (this.minor**2 / this.major**2))
+
     private c: number = this.major * this.e
 
     coordinates = (angle: number, radius: number): number[] => {
