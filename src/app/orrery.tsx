@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import {PlanetDisplay} from "app/planet-display";
 import "./orrery.less"
-import {Stage} from "react-konva";
+import {Planets} from "horizons-service/models/enums";
 
 export function Orrery(): JSX.Element {
     const [windowLength, setWindowLength] = useState(window.innerWidth)
@@ -14,11 +14,9 @@ export function Orrery(): JSX.Element {
         }
         window.addEventListener("resize", onResize)
     })
-
+    const planets: string[] = [Planets.Mercury, Planets.Venus, Planets.Earth, Planets.Mars, Planets.Jupiter, Planets.Saturn, Planets.Uranus, Planets.Neptune];
     return (
         // @ts-ignore
-        <Stage width={windowLength} height={windowHeight}>
-            <PlanetDisplay debug={true} height={windowHeight} width={windowLength}/>
-        </Stage>
+        <PlanetDisplay debug={true} height={windowHeight} width={windowLength} planets={planets}/>
     )
 }

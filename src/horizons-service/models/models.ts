@@ -25,6 +25,6 @@ export interface HorizonsEphemResponse {
     delDot?: number | null
 }
 
-export interface HorizonsResponse {
-    [key: string]: Array<HorizonsEphemResponse>
+export type HorizonsResponse = {
+    [key in Planets | Moons]: Array<HorizonsEphemResponse>
 }

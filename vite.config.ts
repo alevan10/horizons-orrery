@@ -9,7 +9,10 @@ const SRC: string = path.resolve(ROOT, "src")
 export default defineConfig({
   plugins: [react()],
   server: {
-    port: 8080
+    port: 8080,
+    watch: {
+      usePolling: true
+    }
   },
   base: "./",
   resolve: {
@@ -18,5 +21,5 @@ export default defineConfig({
       "horizons-service": path.resolve(SRC, "horizons-service"),
       models: path.resolve(SRC, "models")
     }
-  }
+  },
 })
