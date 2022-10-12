@@ -5,7 +5,7 @@ import "./planet.less"
 
 type PlanetProps = {
     id: string,
-    angle: number,
+    angle?: number | null,
     radius: number,
     centerX: number,
     centerY: number,
@@ -36,7 +36,7 @@ export const getColor = (id: string): string => {
 }
 
 
-export function Planet({id, radius, centerX, centerY, angle, planetSize = 30}: PlanetProps) {
+export function Planet({id, radius, centerX, centerY, angle = 90, planetSize = 30}: PlanetProps) {
     const color = getColor(id);
     const planetStyle = {
         height: planetSize,

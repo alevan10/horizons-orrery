@@ -12,9 +12,9 @@ type EllipseStyleType = {
 
 
 export class Ellipse {
-    public readonly major: number;
+    public readonly major: number = 0;
 
-    public readonly minor: number;
+    public readonly minor: number = 0;
 
     constructor({semiMajorAxis, semiMinorAxis}: EllipseConstructorType) {
         this.major = semiMajorAxis

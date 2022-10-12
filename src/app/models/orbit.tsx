@@ -9,10 +9,10 @@ type OrbitProps = {
     minorAxis: number,
     centerX: number,
     centerY: number,
-    angle: number,
+    angle?: number | null,
     useCircle?: boolean,
     lineThickness?: number,
-    children: JSX.Element[]
+    children: JSX.Element | JSX.Element[]
 }
 
 export function Orbit(
@@ -24,7 +24,7 @@ export function Orbit(
         majorAxis,
         minorAxis,
         children,
-        angle,
+        angle = 90,
         lineThickness = 2
     }: OrbitProps
 ): JSX.Element {
