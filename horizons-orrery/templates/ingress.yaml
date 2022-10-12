@@ -4,7 +4,7 @@
 apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
 metadata:
-  name: horizons-orrery-middleware
+  name: horizons-orrery-middleware-prefix-strip
   namespace: horizons
   labels:
     {{- include "horizons-orrery.labels" . | nindent 4 }}
@@ -16,6 +16,23 @@ spec:
   stripPrefix:
     prefixes:
       - "/orrery"
+  redirectRegex:
+    permanent: true
+    regex: "^http(s?)://(.*)/(.+)"
+    replacement: "http${1}://${2}/${3}/"
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: horizons-orrery-middleware-redirect
+  namespace: horizons
+  labels:
+    {{- include "horizons-orrery.labels" . | nindent 4 }}
+  {{- with .Values.ingress.annotations }}
+  annotations:
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
+spec:
   redirectRegex:
     permanent: true
     regex: "^http(s?)://(.*)/(.+)"
