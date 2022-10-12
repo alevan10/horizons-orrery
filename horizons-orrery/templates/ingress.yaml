@@ -16,6 +16,10 @@ spec:
   stripPrefix:
     prefixes:
       - "/orrery"
+  redirectRegex:
+    permanent: true
+    regex: "^http(s?)://(.*)/(.+)"
+    replacement: "http${1}://${2}/${3}/"
 ---
 {{- if and .Values.ingress.className (not (semverCompare ">=1.18-0" .Capabilities.KubeVersion.GitVersion)) }}
   {{- if not (hasKey .Values.ingress.annotations "kubernetes.io/ingress.class") }}
