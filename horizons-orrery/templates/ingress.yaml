@@ -16,10 +16,6 @@ spec:
   stripPrefix:
     prefixes:
       - "/orrery"
-  redirectRegex:
-    permanent: true
-    regex: "^http(s?)://(.*)/(.+)"
-    replacement: "http${1}://${2}/${3}/"
 ---
 apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
