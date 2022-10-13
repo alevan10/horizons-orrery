@@ -4,7 +4,7 @@
 apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
 metadata:
-  name: horizons-orrery-middleware-prefix-strip
+  name: horizons-orrery-middleware
   namespace: horizons
   labels:
     {{- include "horizons-orrery.labels" . | nindent 4 }}
@@ -16,23 +16,6 @@ spec:
   stripPrefix:
     prefixes:
       - "/orrery"
----
-apiVersion: traefik.containo.us/v1alpha1
-kind: Middleware
-metadata:
-  name: horizons-orrery-middleware-redirect
-  namespace: horizons
-  labels:
-    {{- include "horizons-orrery.labels" . | nindent 4 }}
-  {{- with .Values.ingress.annotations }}
-  annotations:
-    {{- toYaml . | nindent 4 }}
-  {{- end }}
-spec:
-  redirectRegex:
-    permanent: true
-    regex: "^http(s?)://(.*)/(.+)"
-    replacement: "http${1}://${2}/${3}/"
 ---
 {{- if and .Values.ingress.className (not (semverCompare ">=1.18-0" .Capabilities.KubeVersion.GitVersion)) }}
   {{- if not (hasKey .Values.ingress.annotations "kubernetes.io/ingress.class") }}
