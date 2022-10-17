@@ -52,7 +52,7 @@ export function PlanetDisplay({width, height, planets = [Planets.Earth]}: Planet
         });
         const response: HorizonsResponse = await horizonsService.get(horizonsRequests);
         horizonsRequests.forEach((request: HorizonsRequest) => {
-            retrievedAngles[request.target] = response[request.target][0].raIcrf
+            retrievedAngles[request.target] = response[request.target][0].dRa
         });
         setAngles(retrievedAngles);
         setIsLoading(false);
