@@ -6,7 +6,7 @@ import "./planet.less"
 type PlanetProps = {
     id: string,
     angle?: number | null,
-    radius: number,
+    diameter: number,
     centerX: number,
     centerY: number,
     planetSize: number
@@ -36,18 +36,18 @@ export const getColor = (id: string): string => {
 }
 
 
-export function Planet({id, radius, centerX, centerY, angle = 90, planetSize = 30}: PlanetProps) {
+export function Planet({id, diameter, centerX, centerY, angle = 90, planetSize = 30}: PlanetProps) {
     const color = getColor(id);
     const planetStyle = {
         height: planetSize,
         width: planetSize,
         background: color,
         position: "absolute",
-        top: radius - (planetSize / 2),
-        left: radius / 2
+        top: diameter - (planetSize / 2),
+        left: diameter / 2
     } as CSSProperties;
     return (
-        <Orbit id={id} centerX={centerX} centerY={centerY} color={color} majorAxis={radius} minorAxis={radius} angle={angle}>
+        <Orbit id={id} centerX={centerX} centerY={centerY} color={color} majorAxis={diameter} minorAxis={diameter} angle={angle}>
             <div className="planet" style={planetStyle}/>
         </Orbit>
     )

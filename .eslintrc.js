@@ -15,7 +15,9 @@ module.exports = {
       ],
       rules: {
         "react/jsx-filename-extension": "off",
-        "import/no-unresolved": "off"
+        "import/no-unresolved": "off",
+        "@typescript-eslint/no-loop-func": "warn",
+        "no-loop-func": "off"
       },
 
       parserOptions: {
